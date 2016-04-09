@@ -12,7 +12,7 @@ If red is clicked, the background color changes to red
 If green is clicked, the background color changes to green
 If blue is clicked, the background color changes to blue
 If yellow is clicked, the background color changes to yellow
-![1.screenshot](Pictures/1.Button_Background_java/java_blue.png?raw=true "Screenshot")
+![1.screenshot](Pictures/1.Button_Background_java/java_blue.png?=30x100 "Screenshot")
 
 
 ##2. Color background depending on the button clicked
