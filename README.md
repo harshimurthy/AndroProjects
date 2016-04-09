@@ -26,6 +26,6 @@ If red is clicked, the background color changes to red
 If green is clicked, the background color changes to green
 If blue is clicked, the background color changes to blue
 If yellow is clicked, the background color changes to yellow
-![2.screenshot](Pictures/1.Button_Background_xml/red_xml.png)
+![2.screenshot](Pictures/2.Button_Background_xml/red_xml.png)
 
 
