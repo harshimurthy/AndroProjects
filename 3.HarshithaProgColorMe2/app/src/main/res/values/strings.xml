@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HarshithaProgColorMe</string>
+
+    <string name="red_button">Red</string>
+    <string name="green_button">Green</string>
+    <string name="blue_button">Blue</string>
+    <string name='yellow_button'>Yellow</string>
+</resources>

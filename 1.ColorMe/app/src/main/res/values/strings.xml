@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ColorMe</string>
+    <string name="color_xml">Color Me Dark using XML</string>
+    <string name="color_java">Color Me Light using Java</string>
+    <string name="color_me">Welcome to Color Me application</string>
+    <string name="red_button">Red</string>
+    <string name="green_button">Green</string>
+    <string name="blue_button">Blue</string>
+    <string name='yellow_button'>Yellow</string>
+
+    <string name="pink_button">Pink</string>
+    <string name="purple_button">Purple</string>
+    <string name="green_light_button">Green</string>
+    <string name="orange_button">Orange</string>
+</resources>

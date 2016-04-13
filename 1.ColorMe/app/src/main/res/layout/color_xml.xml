@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:saveEnabled="true"
+    tools:context="channel.all.it.mix.colorme.ColorXml"
+    android:weightSum="1">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:text="@string/red_button"
+        android:layout_weight="0.25"
+        android:background="@color/red"
+        android:onClick="submit_red_xml"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/green_button"
+        android:id="@+id/button4"
+        android:background="@color/green"
+        android:layout_weight="0.25"
+        android:onClick="submit_green_xml"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/blue_button"
+        android:id="@+id/button5"
+        android:background="@color/blue"
+        android:layout_weight="0.25"
+        android:onClick="submit_blue_xml"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/yellow_button"
+        android:id="@+id/button6"
+        android:background="@color/yellow"
+        android:layout_weight="0.25"
+        android:onClick="submit_yellow_xml"/>
+</LinearLayout>
