@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:configChanges="orientation"
+
+    tools:context="edu.ucsb.cs.cs185.harshitha.keepscore.MainActivity"
+
+    android:textAllCaps="false"
+    android:weightSum="1">
+
+    <Button
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:text="@string/EnterDate"
+        android:id="@+id/EnterDate"
+        style="?android:attr/borderlessButtonStyle"
+        android:textStyle="bold"
+        android:textColor="@color/lightBlue"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="false"
+        android:onClick="submitDate"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.44" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Team1"
+        android:id="@+id/team1"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/lightBlue"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="false"
+        android:onClick="onSetTask"
+        android:layout_below="@+id/EnterDate"
+        android:layout_alignStart="@+id/team2"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vs"
+        android:id="@+id/vs"
+        android:textColor="@color/lightBlue"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="false"
+        android:layout_below="@+id/team1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Team2"
+        android:id="@+id/team2"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/lightBlue"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="false"
+        android:onClick="onSetTask2"
+        android:layout_below="@+id/vs"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:text="@string/NextGame"
+        android:id="@+id/nextGame"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/lightBlue"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_below="@+id/team2"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="false"
+        android:onClick="nextGameSubmit"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.38" />
+</LinearLayout>

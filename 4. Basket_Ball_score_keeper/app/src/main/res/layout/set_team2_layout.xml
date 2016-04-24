@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:paddingBottom="20dp">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/teamName"
+        android:id="@+id/tasks_label1"
+        android:textSize="24sp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/task_selection2"
+        android:layout_weight="1"
+        android:entries="@array/team2"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/tasks_label1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score"
+        android:id="@+id/scoring"
+        android:layout_below="@+id/task_selection2"
+        android:layout_alignParentStart="true"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/score2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:singleLine="true"
+        android:textSize="24sp"
+        android:gravity="right"
+        android:layout_alignTop="@+id/scoring"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/task_selection2"
+        />
+
+</RelativeLayout>

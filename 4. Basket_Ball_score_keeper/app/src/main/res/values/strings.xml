@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Keep Score</string>
+
+    <string name="vs">VS</string>
+    <string name="EnterDate">Enter Date</string>
+    <string name="Team1">Team 1 \n 0</string>
+    <string name="Team2">Team 2 \n 0</string>
+    <string name="NextGame">Next Game</string>
+
+    <string name="date_format" formatted="false">%s %d,%d</string>
+
+    <string name="teamName">Team Name:</string>
+    <string name="score">Score:</string>
+
+</resources>
