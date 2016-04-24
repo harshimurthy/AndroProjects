@@ -29,3 +29,21 @@ If yellow is clicked, the background color changes to yellow
 ![2.screenshot](Pictures/2.Button_Background_xml/red_xml.png)
 
 
+##3. Color Me Android application
+https://youtu.be/n5T0kkQvJlw
+
+##4. Basket Ball team, date and score selector with multi-screen resposive UI
+https://www.youtube.com/watch?v=tACYa4Tw8jI
+
+Implementation of 
++ DatePicker
++ SetMaxDate
++ SetMinDate
++ Fragments
++ Spinner
++ Select text
++ Phone view
++ Save state on rotation
++ Different portrait and landscape save
+
+
