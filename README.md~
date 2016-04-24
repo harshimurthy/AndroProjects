@@ -30,7 +30,7 @@ If yellow is clicked, the background color changes to yellow
 
 
 ##3. Color Me Android application
-https://youtu.be/n5T0kkQvJlw
+https://www.youtube.com/watch?v=n5T0kkQvJlw
 
 ##4. Basket Ball team, date and score selector with multi-screen resposive UI
 https://www.youtube.com/watch?v=tACYa4Tw8jI
