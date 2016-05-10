@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/folder_view"
+            android:title="Folder View" />
+        <item
+            android:id="@+id/list_view"
+            android:title="List View" />
+        <item
+            android:id="@+id/settings"
+
+            android:title="Settings" />
+        <item
+            android:id="@+id/help"
+
+            android:title="Help" />
+    </group>
+
+
+
+</menu>
