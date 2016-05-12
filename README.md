@@ -38,6 +38,20 @@ https://www.youtube.com/watch?v=tACYa4Tw8jI
 Implementation of 
 + DatePicker
 + SetMaxDate
+
+
+##5. Camera Roll
+
+Implementation of
++ Grid View
++ Image Adapter
++ Camera permissions
++ Folder creation
++ Uri
++ Camera
++ File save
++ Photo retrieve
++ Notification
 + SetMinDate
 + Fragments
 + Spinner
