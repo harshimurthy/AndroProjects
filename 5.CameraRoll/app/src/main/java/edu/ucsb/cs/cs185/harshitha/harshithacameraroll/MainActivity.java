@@ -1,10 +1,14 @@
 package edu.ucsb.cs.cs185.harshitha.harshithacameraroll;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,7 +16,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,19 +29,31 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final int MEDIA_TYPE_IMAGE = 1;
+
+
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-    private static final int REQUEST_TAKE_PHOTO=1;
+    int counter=0;
+    String photoPath;
+    int Take_pic_code=125;
+    List<String> listofPhotos = new ArrayList<String>();
+    private int MY_REQUEST_CODE=2;
+
+
+
+    private static final int REQUEST_CODE_PERMISSION = 2;
+    //String[] mPermission = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA};
+
     private Uri fileUri;
 
 
-    //working with images
-    File image1 = null;
-    String cameraRollImages;
-    File imageFolder;
     //File imageFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "HarshithaCameraRoll");
 
     ArrayAdapter imageArray;
@@ -49,18 +67,31 @@ public class MainActivity extends AppCompatActivity
                     R.drawable.icon,
                     R.drawable.icon
             };
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        File checkfiles = new File(Environment.getExternalStorageDirectory() + "/CS185Pics/photo-0.jpg");
+        if(checkfiles.exists()){
+          //  TextView text = (TextView) findViewById(R.id.no_photos);
+           // text.setVisibility(View.GONE);
+        }
+
+
+
         //adding grid view
         GridView gridView=(GridView)findViewById(R.id.gridviewmainacitvity);
         //imageArray=new ArrayAdapter(this, R.layout.image_item,new ArrayList<String>());
        //gridView.setAdapter(imageArray);
-         gridView.setAdapter(new ImageAdapter(this));
+       //  gridView.setAdapter(new ImageAdapter(this));
+
+
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent,
@@ -71,43 +102,41 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        String tempAddtoDataset;
+
+        File deleteDir= new File(Environment.getExternalStoragePublicDirectory((Environment.DIRECTORY_PICTURES)) + "/CS185Pics");
+        if(deleteDir.isDirectory()){
+            Log.d("cameraroll", "add");
+            for(File file: deleteDir.listFiles()) {
+                tempAddtoDataset=file.getAbsolutePath();
+                //Environment.getExternalStorageDirectory() + "/CS190IPics/photo-"+(timeStamp)+".jpg";
+                Log.d("cameraroll", "add");
+                listofPhotos.add(0,tempAddtoDataset);
+            }
+        }
+        String[] myDataset =listofPhotos.toArray(new String[listofPhotos.size()]);
+        gridView.setAdapter(new ImageAdapter(this));
+        File dir=new File(Environment.getExternalStoragePublicDirectory((Environment.DIRECTORY_PICTURES)),"/CS185Pics");
+        if(!dir.exists())
+        {
+            dir.mkdirs();
+        }
 
 
-
-        //image1=new File(imageFolder.getPath()+File.separator+"CamPhoto_"+timeStamp+".jpg");
-
-
-
-
-
-        //done working with images
-
+        //floating camera
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.camera_icon);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //assert fab != null;
+        fab.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                //String timeStamp=new SimpleDateFormat("yyMMdd_HHmmss").format(new Date());
-                //image1=new File(imageFolder.getPath()+File.separator+"CamPhoto_"+timeStamp+".jpg");
-                //Intent intent = new Intent("MediaStore.ACTION_IMAGE_CAPTURE");
-                //File photoFile=null;
-                /**
-                if(intent.resolveActivity(getPackageManager())!=null)
-                {
-                  //  imageFolder=getExternalFilesDir(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"hi");
+            public void onClick(View view)
+            {
+                submitTakePicIntent();
 
-                    photoFile=createImageFile();
-                }
-                if(photoFile!=null)
-                {
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(photoFile));
-                }
-                startActivityForResult(intent,REQUEST_TAKE_PHOTO);
 
-                ///fileUri=getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-               // Uri image2=getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-                //intent.putExtra(MediaStore.EXTRA_OUTPUT,fileUri);
-                //startActivityForResult(intent,CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-                 */
+
+
+
             }
         });
 
@@ -121,9 +150,120 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private File createImageFile() {
-        return null;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        if (requestCode == Take_pic_code && resultCode == RESULT_OK) {
+            String[] myDataset = listofPhotos.toArray(new String[listofPhotos.size()]);
+        }
+        else
+            listofPhotos.remove(0);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+
+
+        return super.onCreateOptionsMenu(menu);
+
+
+    }
+
+    private void submitTakePicIntent() {
+
+        if (checkSelfPermission(Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(new String[]{Manifest.permission.CAMERA},
+                    MY_REQUEST_CODE);
+        }
+                //Capture Image by opening camera intent
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if(takePictureIntent.resolveActivity(getPackageManager())!=null)
+        {
+            File photoFile=null;
+            try
+            {
+                photoFile=createImageFile();
+               // TextView text=(TextView)findViewById(R.id.no_photos);
+                //text.setVisibility(View.GONE);
+            }
+            catch(IOException e)
+            {
+                //error
+            }
+            if(photoFile!=null)
+            {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent,Take_pic_code);
+
+                /**
+                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            MY_REQUEST_CODE);
+                }
+                 */
+
+
+                listofPhotos.add(0, photoFile.getAbsolutePath());
+            }
+        }
+
+
+    }
+
+    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == MY_REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Now user should be able to use camera
+                // Log.d("Permission granted!!LOL");
+            }
+            else {
+                //Log.d("Damn! Why permissions");
+                // Your app will not have this permission. Turn off all functions
+                // that require this permission or it will force close like your
+                // original question
+            }
+        }
+    }
+    private File createImageFile() throws IOException
+    {
+        String imageFileName="Photo-"+counter;
+        counter++;
+        File savingDir=new File(Environment.getExternalStoragePublicDirectory((Environment.DIRECTORY_PICTURES))+"/CS185Pics");
+        savingDir.mkdirs();
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    MY_REQUEST_CODE);
+        }
+        File image=new File(savingDir,imageFileName+".jpg");
+        if(!image.exists())
+        {
+            try
+            {
+                image.createNewFile();
+            }
+            catch(IOException ex)
+            {
+
+            }
+        }
+
+        photoPath="file:"+image.getAbsolutePath();
+        return image;
+
+    }
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -135,12 +275,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -191,12 +326,10 @@ public class MainActivity extends AppCompatActivity
     }
 
    //Implementing image adapter
-   public class ImageAdapter extends BaseAdapter
-   {
+   public class ImageAdapter extends BaseAdapter {
        private Context context;
 
-       public ImageAdapter(Context c)
-       {
+       public ImageAdapter(Context c) {
            context = c;
        }
 
@@ -215,8 +348,7 @@ public class MainActivity extends AppCompatActivity
        }
 
        //---returns an ImageView view---
-       public View getView(int position, View convertView, ViewGroup parent)
-       {
+       public View getView(int position, View convertView, ViewGroup parent) {
            ImageView imageView;
            if (convertView == null) {
                imageView = new ImageView(context);

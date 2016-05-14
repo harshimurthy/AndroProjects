@@ -22,5 +22,17 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
+    <!--
+    <TextView
+        android:id="@+id/no_photos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="No Photos"
+        android:textSize="40sp"
+
+
+        ></TextView> -->
+
 
 </android.support.v4.widget.DrawerLayout>
