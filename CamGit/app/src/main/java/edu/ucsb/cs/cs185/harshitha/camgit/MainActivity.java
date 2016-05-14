@@ -43,6 +43,9 @@ List<String> listofPhotos = new ArrayList<String>();
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
+
+
+
             File checkfiles = new File(Environment.getExternalStorageDirectory() + "/CS190IPics/photo-0.jpg");
 
             if(checkfiles.exists()){
@@ -70,7 +73,7 @@ List<String> listofPhotos = new ArrayList<String>();
             if(deleteDir.isDirectory()){
                 Log.d("cameraroll", "add");
                 for(File file: deleteDir.listFiles()) {
-                    tempAddtoDataset=file.getAbsolutePath();
+                    tempAddtoDataset = file.getAbsolutePath();
                     //Environment.getExternalStorageDirectory() + "/CS190IPics/photo-"+(timeStamp)+".jpg";
                     Log.d("cameraroll", "add");
                     listofPhotos.add(0,tempAddtoDataset);
