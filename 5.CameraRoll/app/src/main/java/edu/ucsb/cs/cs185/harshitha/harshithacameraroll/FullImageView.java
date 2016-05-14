@@ -16,6 +16,9 @@ public class FullImageView extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imagefull);
         ImageView img=(ImageView)findViewById(R.id.imageView2);
-        img.setBackgroundResource(R.drawable.icon);
+       //img.setBackgroundResource(R.drawable.icon);
+        //img.setImageResource();
+        //img.setImageURI(Uri.parse("file://root/sdcard/Pictures/CS185Pics/Photo-" + position + ".jpg"));
+
     }
 }
