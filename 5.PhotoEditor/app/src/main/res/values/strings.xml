@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Photo Editor</string>
+    
+    <string name="zoom">zoom</string>
+    <string name="save">save</string>
+    <string name="revert">revert</string>
+    <string name="picture">picture</string>
+
+    <string name="blur">blur</string>
+    <string name="bw">black and white</string>
+    <string name="round">round</string>
+</resources>
