@@ -1,14 +1,14 @@
 package edu.ucsb.cs.cs185.harshitha.photoeditor;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.io.File;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,22 +31,47 @@ public class MainActivity extends AppCompatActivity {
         toptoolbar.inflateMenu(R.menu.menu_resource);
         bottomtoolbar.inflateMenu(R.menu.menu_bottom);
 
+        //getSupportActionBar().setDisplayShowHomeEnabled(false);
+        //getSupportActionBar().setIcon(R.drawable.save_icon);
+       // setSupportActionBar(toptoolbar);
+
         toptoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
-                switch (item.getItemId())
+                int id=item.getItemId();
+                if(id==R.id.gallery)
                 {
-                    case R.id.gallery:galleryAddPic();
+                    Log.d("hi","hi");
+
+
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("You clicked Open gallery")
+                                .show();
+
 
                 }
+
+                return true;
             }
         });
 
         bottomtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                return false;
+            public boolean onMenuItemClick(MenuItem item)
+            {
+                int id=item.getItemId();
+                if(id==R.id.blur)
+                {
+                    Log.d("hi", "hi");
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("content://media/internal/images/media"));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+
+
+                }
+                return true;
 
             }
         });
@@ -73,6 +98,25 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.menu_resource,menu);
+        toptoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id=item.getItemId();
+                if(id==R.id.save)
+                {
+                    Log.d("hi","hi");
+
+
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setMessage("You clicked Open gallery")
+                            .show();
+
+
+                }
+
+                return true;
+            }
+        });
         //getMenuInflater().inflate(R.menu.menu_bottom,menu);
         return true;
     }
