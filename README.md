@@ -60,4 +60,12 @@ Implementation of
 + Save state on rotation
 + Different portrait and landscape save
 
+##6. PhotoEditor
+
+Implementation of
++ Open Gallery
++ Create toolbar
++ Add icon images
++ Load images
+
 
