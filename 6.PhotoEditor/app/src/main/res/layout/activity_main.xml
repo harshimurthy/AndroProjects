@@ -17,18 +17,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/top_toolbar"
         android:backgroundTint="@color/colorPrimary"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"/>
 
-    </android.support.v7.widget.Toolbar>
-
-    <ImageView
+    <edu.ucsb.cs.cs185.harshitha.photoeditor.ImgEdit
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/default_screen"
-       />
+        android:gravity="center"
+        android:id="@+id/imageView1"
+        android:src="@drawable/default_screen" />     <!--android:background="@drawable/default_screen"-->
+
 
 
 
