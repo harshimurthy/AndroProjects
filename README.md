@@ -67,5 +67,11 @@ Implementation of
 + Create toolbar
 + Add icon images
 + Load images
++ Multi-touch
++ Photo edit
++ black and white image
++ blurred image
++ rounded image
++ image transformations
 
 
