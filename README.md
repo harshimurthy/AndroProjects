@@ -73,5 +73,6 @@ Implementation of
 + blurred image
 + rounded image
 + image transformations
++ Multi-touch and image manipulation 
 
 
