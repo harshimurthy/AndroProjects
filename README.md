@@ -75,4 +75,8 @@ Implementation of
 + image transformations
 + Multi-touch and image manipulation 
 
+### Video
++ Multi touch sample https://youtu.be/zT9b8cTGvp8
++ Photo editor app https://youtu.be/xmV59fJPD9Q
+
 
